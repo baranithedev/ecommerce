@@ -3,6 +3,9 @@ const cors = require('cors')
 const cookieParser = require('cookie-parser')
 require('dotenv').config()
 
+const auth_routes = require('./routes/auth_route/auth.route')
+const user_routes = require('./routes/user_route/user.route')
+
 const app = express()
 
 app.use(cors({
@@ -14,6 +17,9 @@ app.use(cors({
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cookieParser())
+
+app.use("/api/v1/auth", auth_routes)
+app.use("/api/v1/user", user_routes)
 
 app.get('/api/v1/test-server', (req, res) => {
     try {
