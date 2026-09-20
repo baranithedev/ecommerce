@@ -5,6 +5,7 @@ require('dotenv').config()
 
 const auth_routes = require('./routes/auth_route/auth.route')
 const user_routes = require('./routes/user_route/user.route')
+const product_routes = require('./routes/product_route/product.route')
 
 const app = express()
 
@@ -20,6 +21,7 @@ app.use(cookieParser())
 
 app.use("/api/v1/auth", auth_routes)
 app.use("/api/v1/user", user_routes)
+app.use("/api/v1/products", product_routes)
 
 app.get('/api/v1/test-server', (req, res) => {
     try {
