@@ -18,7 +18,7 @@ const secure_product = async (req, res, next) => {
         await cart.save()
         await cart.populate({
             path: 'cart_products.product',
-            select: 'name price image stock'
+            select: 'name price image stock quantity'
         })
         return res.status(200).json({ success: false, message: "Product updated", cart })
     } catch (error) {

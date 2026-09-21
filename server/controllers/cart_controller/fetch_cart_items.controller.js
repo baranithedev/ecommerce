@@ -4,7 +4,7 @@ const fetch_cart_items_controller = async (req, res, next) => {
     try {
         const cart = await cart_model.findOne({ cart_user: req.current_user.id }).populate({
             path: 'cart_products.product',
-            select: 'name price image stock'
+            select: 'name price image stock quantity'
         })
         if (!cart) {
             await cart_model.create({
