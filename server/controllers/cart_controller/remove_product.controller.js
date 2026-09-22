@@ -2,7 +2,7 @@ const cart_model = require('../../models/cart/cart.model')
 
 const remove_product = async (req, res, next) => {
     try {
-        const cart = await cart_model.findOneAndUpdate({ cart_user: req.current_user.id }, {
+        const cart = await cart_model.findOneAndUpdate({ user: req.current_user.id }, {
             $pull: {
                 cart_products: { _id: req.params.product_id }
             }

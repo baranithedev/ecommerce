@@ -2,10 +2,10 @@ const cart_model = require('../../models/cart/cart.model')
 
 const secure_product = async (req, res, next) => {
     try {
-        let cart = await cart_model.findOne({ cart_user: req.current_user.id })
+        let cart = await cart_model.findOne({ user: req.current_user.id })
         if (!cart) {
             cart = await cart_model.create({
-                cart_user: req.current_user.id,
+                user: req.current_user.id,
                 cart_product: [{ product: req.body.product_id, quantity: 1 }]
             })
         }

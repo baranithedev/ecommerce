@@ -8,7 +8,7 @@ const update_product_quantity = async (req, res, next) => {
                 message: "Quantity must be atleast 1"
             })
         }
-        const cart = await cart_model.findOne({ cart_user: req.current_user.id })
+        const cart = await cart_model.findOne({ user: req.current_user.id })
         if (!cart) {
             return res.status(404).json({ success: false, message: "Cart not found" })
         }
